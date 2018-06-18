@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>下划线下划线</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		font-family: Microsoft YaHei,Arial,Helvetica,sans-serif;
+	}
+		textarea{
+			width: calc(100% - 32px);
+			border: 2px solid pink;
+			margin: 0 16px;
+			outline: 0;
+		}
+		footer{
+			text-align: right;
+			padding-top: 16px;
+			color: #6d757a;
+		}
+		h3,h4{
+			text-indent: 32px;
+			color: pink;
+		}
+		button{
+			margin: 0 16px 16px 16px;
+		}
+	</style>
+</head>
+<body>
+	<h3>功能描述Functional description</h3>
+	<p style="padding: 16px; border-bottom: 1px dashed #000000;">
+		直接复制加了下划线后的文字，可以粘贴在任何消息框、输入框内发送显示出去，比如哔哩哔哩的动态、微信的名字、微信朋友圈等等。
+		<br>
+		Directly copy the underlined text, you can paste in any message box, input box to send and display, such as the dynamic, WeChat name, WeChat circle of friends and so on.
+	</p>
+
+<h4>这里输入要转换的文字：Enter the text to be converted here:</h4>
+	<textarea name="" id="input" cols="30" rows="10" placeholder="请在此输入你想生成带下划线的内容"></textarea>
+<button class="clear">
+	清空两个框的内容 clear
+</button>
+<button class="change">
+	转换Convert
+</button>
+	<h4>加下划线后Underlined：</h4>
+<textarea name="" id="output" cols="30" rows="10" placeholder="请在此输入你想生成带下划线的内容"></textarea>
+
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+	function changeword() {
+			var inputword=$('#input').val();
+	var newinput=inputword.split('');
+	//'꯭是最关键的，是用来加下划线的
+	//' ꯭ is the most critical, it is used to underline
+	for (var i = newinput.length - 1; i >= 0; i--) {
+		newinput[i]='꯭'+newinput[i]
+	}
+	newinput[newinput.length - 1]+='꯭';
+	var output=newinput.join('');
+	$('#output').val(output);
+	}
+	$('.change').on('click',function(){
+		changeword();
+	})
+	$('.clear').on('click',function(){
+		var con;
+con=confirm("确认清除两个框的内容Confirm clear two boxes of content?"); //在页面上弹出对话框
+if(con==true){
+	$('textarea').val('')
+};
+
+	})
+</script>
+</body>
+</html>
